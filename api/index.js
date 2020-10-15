@@ -1,6 +1,37 @@
-import { getScreenshot } from "./chromium.js";
+import { launch } from 'puppeteer-core';  
+import chrome from 'chrome-aws-lambda';
 
-module.exports = (req, res) => {
+let _page;
+
+async function getPage() {
+    const options = {
+        args: chrome.args,
+        executablePath: await chrome.executablePath,
+        headless: chrome.headless,
+    };
+    const browser = await launch(options);
+    _page = await browser.newPage();
+    return _page;
+}
+
+async function getScreenshot(html) {
+    // const page = await getPage();
+    // await page.setViewport({ width: 2048, height: 1170 });
+    // await page.setContent(html);
+    // const file = await page.screenshot({ type });
+    // return file;
+    (async () => {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto('https://example.com');
+        const file =  await page.screenshot({path: 'example.png'});
+      
+        await browser.close();
+        return file;
+    })();
+}
+
+export default (req, res) => {
   const { yourName } = req.query;
 
   res.setHeader("Content-Type", "image/svg+xml");
