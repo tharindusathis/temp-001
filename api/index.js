@@ -23,7 +23,7 @@ module.exports = (req, res) => {
   `;
 
   try {
-    const file = await getScreenshot(svg);
+    const file = getScreenshot(svg);
     res.end(file);
   } catch (e) {
     res.statusCode = 500;
