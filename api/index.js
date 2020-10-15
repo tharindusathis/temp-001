@@ -1,4 +1,4 @@
-import { launch } from 'puppeteer-core';  
+// import { launch } from 'puppeteer-core';  
 import chrome from 'chrome-aws-lambda';
 
 let _page;
@@ -9,7 +9,7 @@ async function getPage() {
         executablePath: await chrome.executablePath,
         headless: chrome.headless,
     };
-    const browser = await launch(options);
+    const browser = await chrome.puppeteer.launch(options);
     _page = await browser.newPage();
     return _page;
 }
