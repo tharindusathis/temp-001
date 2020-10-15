@@ -1,23 +1,4 @@
-import { launch } from 'puppeteer-core';
-import chrome from 'chrome-aws-lambda';
-const exePath = process.platform === 'win32'
-  ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-  : process.platform === 'linux'
-    ? '/usr/bin/google-chrome'
-    : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-
-function getScreenshot(html) {
-  const browser = await launch({
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
-    headless: chrome.headless,
-  });
-  page = await browser.newPage();
-  await page.setViewport({ width: 2048, height: 1170 });
-  await page.setContent(html);
-  const file = await page.screenshot({ type });
-  return file;
-}
+import { getScreenshot } from require("./chromium.js");
 
 module.exports = (req, res) => {
   const { yourName } = req.query;
