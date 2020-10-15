@@ -1,4 +1,4 @@
-import { getScreenshot } from require("./chromium.js");
+import { getScreenshot } from "./chromium.js";
 
 module.exports = (req, res) => {
   const { yourName } = req.query;
