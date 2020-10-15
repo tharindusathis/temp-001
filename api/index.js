@@ -34,7 +34,7 @@ async function getScreenshot(html) {
 export default (req, res) => {
   const { yourName } = req.query;
 
-  res.setHeader("Content-Type", "image/svg+xml");
+  res.setHeader("Content-Type", "image/png");
 
   const svg = `
     <svg fill="none" viewBox="0 0 600 400" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
