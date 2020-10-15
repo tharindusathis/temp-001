@@ -1,4 +1,4 @@
-// import { launch } from 'puppeteer-core';  
+import { launch } from 'puppeteer-core';  
 import chrome from 'chrome-aws-lambda';
 const exePath = process.platform === 'win32'
 ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
@@ -14,7 +14,7 @@ async function getPage() {
         executablePath: await chrome.executablePath,
         headless: chrome.headless,
     };
-    const browser = await chrome.puppeteer.launch(options);
+    const browser = await launch(options);
     _page = await browser.newPage();
     return _page;
 }
