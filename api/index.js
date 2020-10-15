@@ -57,7 +57,8 @@ export default (req, res) => {
 
   try {
     const file = getScreenshot(svg);
-    res.end(file);
+    // res.end(file);
+    res.send(file)
   } catch (e) {
     res.statusCode = 500;
     res.setHeader('Content-Type', 'text/html');
