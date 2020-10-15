@@ -26,7 +26,7 @@ export async function getScreenshot(html) {
     // const file = await page.screenshot({ type });
     // return file;
     (async () => {
-        const browser = await puppeteer.launch();
+        const browser = await launch();
         const page = await browser.newPage();
         await page.goto('https://example.com');
         const file =  await page.screenshot({path: 'example.png'});
