@@ -15,7 +15,7 @@ module.exports = (req, res) => {
             }
           </style>
 
-          <p class="title">Hello ${yourName}</p> 
+          <p class="title">Hello, ${yourName}</p> 
 
         </div>
       </foreignObject>
